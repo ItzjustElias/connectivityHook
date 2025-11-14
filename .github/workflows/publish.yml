@@ -1,27 +1,43 @@
-name: Publish Package
+name: Build & Publish
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
+  pull_request:
+    types: [closed]
 
 jobs:
   publish:
+    if: github.event.pull_request.merged == true || startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          # Only auto-bump for Dependabot PR merges (not for manual tags)
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # get current version
+            CURRENT=$(npm view connectivityhook version)
+            # increment patch
+            NEW=$(echo $CURRENT | awk -F. -v OFS=. '{$NF++; print}')
+            echo "New version: $NEW"
+            npm version $NEW --no-git-tag-version
+          fi
 
       - name: Publish to npm
         env:
