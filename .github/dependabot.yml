@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"  # location of package.json
+    schedule:
+      interval: "weekly"  # check for updates every week
+    commit-message:
+      prefix: "chore(deps)"  # optional commit message prefix
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "react"
+        versions: ["^18.2.0"]  # optional: ignore specific versions
