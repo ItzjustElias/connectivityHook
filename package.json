@@ -1,0 +1,46 @@
+{
+  "name": "connectivityhook",
+  "version": "1.0.0",
+  "description": "A comprehensive React hook for network status and bandwidth testing.",
+  "main": "dist/cjs/NetworkConnectivity.js",
+  "module": "dist/esm/NetworkConnectivity.js",
+  "types": "dist/types/NetworkConnectivity.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "del /s /q dist",
+    "build:types": "tsc --build tsconfig.json",
+    "build:cjs": "babel src --out-dir dist/cjs --extensions \".ts,.tsx\" --copy-files --source-maps inline --root-mode upward --env-name cjs",
+    "build:esm": "babel src --out-dir dist/esm --extensions \".ts,.tsx\" --copy-files --source-maps inline --root-mode upward --env-name esm",
+    "build": "npm run clean && npm run build:types && npm run build:cjs && npm run build:esm",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "connectivity",
+    "network",
+    "bandwidth",
+    "npm",
+    "wifi"
+  ],
+  "author": "Elias",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
+  }
+}
