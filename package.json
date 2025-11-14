@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "clean": "del /s /q dist",
+    "clean": "rimraf dist",
     "build:types": "tsc --build tsconfig.json",
     "build:cjs": "babel src --out-dir dist/cjs --extensions \".ts,.tsx\" --copy-files --source-maps inline --root-mode upward --env-name cjs",
     "build:esm": "babel src --out-dir dist/esm --extensions \".ts,.tsx\" --copy-files --source-maps inline --root-mode upward --env-name esm",
