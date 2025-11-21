@@ -1,4 +1,5 @@
 # ConnectivityHook (React Network Connectivity Hook)
+![alt text](https://img.shields.io/npm/d18m/connectivityhook.svg)
 
 A lightweight, powerful, and comprehensive React hook and provider for monitoring real-time network status, browser Network Information API metrics, and manual internet speed (download, upload, latency) testing.
 
