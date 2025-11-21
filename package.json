@@ -1,6 +1,6 @@
 {
   "name": "connectivityhook",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A comprehensive React hook for network status and bandwidth testing.",
   "main": "dist/cjs/NetworkConnectivity.js",
   "module": "dist/esm/NetworkConnectivity.js",
